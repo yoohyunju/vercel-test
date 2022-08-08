@@ -1,15 +1,18 @@
 name: Bare Minimum Requirements
 
+# 언제 job을 작동시킬지
 on: [push, pull_request]
 
+# 어떤 job을 할지
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 # GitHub의 코드 저장소에 올려둔 코드를 CI 서버로 내려받은 후에 특정 브랜치로 전환하는 행위
       - name: Bare Minimum Requirements
         uses: actions/setup-node@v1
         with:
           node-version: '16'
       - run: npm install
       - run: npm test
+      - run: ls -al
